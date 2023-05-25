@@ -153,3 +153,56 @@ query {
         }
     }
 }
+query {
+    articles(
+        where: {
+        _and: [
+            { published_on: { _gte: "2017-01-01" } },
+            { published_on: { _lte: "2017-12-31" } }
+        ]
+    }
+    )
+    {
+        id
+        title
+        published_on
+    }
+
+},
+
+query {
+    articles(where: {
+        _and: [
+            { published_on: { _gte: "2022-12-31" } }
+            { published_on: { _lte: "2019-12-31" } }
+        ]
+    }) {
+        id
+        title
+        published_on
+
+    }
+};
+query {
+    articles(where: {
+        _or: [
+            { rating: { _gte: 4 } },
+            { published_on: { _gte: "2019-23-2" } }
+        ]
+    }), {
+        id,
+        name,
+        rating,
+        published_on,
+
+    }
+}
+
+query {
+    articles(where: { author: { name: { _eq: "Faizan Khan" } } }) {
+        id
+        title
+
+
+    }
+}
