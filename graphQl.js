@@ -141,3 +141,15 @@ query {
 
     }
 }
+
+query {
+    authors(where: { articles: { rating: { _gt: 4 } } }) {
+        id
+        name
+        articles(where: { rating: { _gt: 4 } }) {
+            id
+            title
+            rating
+        }
+    }
+}
