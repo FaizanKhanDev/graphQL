@@ -24,6 +24,7 @@ export default {
     `,
     },
     apollo: {
+        // ====== Articles ===== //
         articles: gql`
         query getArticles {
             id
@@ -33,17 +34,19 @@ export default {
                 name
             }
         }`,
+        // ====== authors ===== //
         authors: gql`
         query getAuthor {
             id
             name
-            articles {
+            articles { 
                 id 
                 title
             }
 
         }
         `
+        //===== 
 
     }
 };
