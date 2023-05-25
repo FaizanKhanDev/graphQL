@@ -44,11 +44,100 @@ export default {
                 title
             }
 
-        }
-        `
-        //===== 
+        }`,
+        articles_aggregate: gql`
+            query getAggregate {
+                count
+                sum {
+                    rating
+                }
+                avg {
+                    rating
+                }
+                max {
+                    rating
+                }
+
+            }
+            query nodes {
+                    id
+                    title
+                    rating
+                }`,
+
+        author: gql`
+         query getAuthors(where: {id: {_eq:1}}) {
+            id 
+            name
+            articles_aggregate {
+                aggrete {
+                    count
+                    avg {
+                        rating
+                    }
+                    max {
+                        rating
+
+                    }
+                }
+
+            }
+           
+         }
+         nodes {
+                id
+                title
+
+            }
+        `,
+
+
 
     }
+
 };
 
+query {
+    authors(where: { id: { _eq: 1 } }) {
+        id
+        name
+    articles_aggregate {
+      aggregate {
+                count
+        avg {
+                    rating
+                }
+        max {
+                    rating
+                }
+            }
+      nodes {
+                id
+                title
+                rating
+            }
+        }
+    }
+}
 
+
+
+query {
+    author(where: {
+        name: {
+            _eq: "Faizan khan"
+        }
+    }) {
+        id
+        name
+
+    }
+}
+
+query {
+    author(where: { name: { _eq: "Faizan Khan Dev" } }) {
+        id
+        name
+
+    }
+}
